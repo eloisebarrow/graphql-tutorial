@@ -33,3 +33,7 @@ returns an object "data" that holds an object, books, which holds an array of da
 
 STEPS
 
+To run backend:
+
+node app
+
