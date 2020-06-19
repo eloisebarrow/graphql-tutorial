@@ -1,9 +1,11 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql'); // provides simple way to create express server that runs graphql API by using middleware on a single route
+const schema = require('./schema/schema');
 
 const app = express();
 
-app.use('/graphql', graphqlHTTP({
+app.use('/graphql', graphqlHTTP({ // middleware
+    schema
     // will pass in options 
 }));
 
