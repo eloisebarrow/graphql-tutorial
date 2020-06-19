@@ -27,7 +27,7 @@ const RootQuery = new GraphQLObjectType({ // RootQuery: how we initially jump in
             args: { id: { type: GraphQLString } },
             resolve(parent, args){ // this function fires when 'book' is seen in a query
                 // code to get data from db / other source
-                return _find(books, { id: args.id }); //  use lodash to look thru books array and find id of args.id
+                return _.find(books, { id: args.id }); //  use lodash to look thru books array and find id of args.id
             }
         }
     }
