@@ -4,7 +4,7 @@
 
 Front End
 - React
-- Apollo
+- Apollo (a GraphQL client that allows us to connect GraphQL with React)
 
 Backend
 - Express.js
@@ -12,7 +12,7 @@ Backend
 - Lodash
 
 Database
-- MongoDB, via MLabs
+- MongoDB Atlas
 
 Testing
 - GraphiQL
