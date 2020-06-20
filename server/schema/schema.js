@@ -9,7 +9,8 @@ const {
     GraphQLSchema,
     GraphQLID, // allows us to pass either int or string in query
     GraphQLInt,
-    GraphQLList
+    GraphQLList,
+    GraphQLNonNull // makes any field wrapped with it required
 } = graphql;
 
 const BookType = new GraphQLObjectType({
@@ -81,8 +82,8 @@ const Mutation = new GraphQLObjectType({ // change the data in some way
         addAuthor: {
             type: AuthorType,
             args: {
-                name: { type: GraphQLString },
-                age: { type: GraphQLInt }
+                name: { type: new GraphQLNonNull(GraphQLString) },
+                age: { type: new GraphQLNonNull(GraphQLInt) }
             },
             resolve(parent, args){
                 let author = new Author({ // can do because we imported Author model above
@@ -95,9 +96,9 @@ const Mutation = new GraphQLObjectType({ // change the data in some way
         addBook: {
             type: BookType,
             args: {
-                name: { type: GraphQLString },
-                genre: { type: GraphQLString },
-                authorId: { type: GraphQLID },
+                name: { type: new GraphQLNonNull(GraphQLString) },
+                genre: { type: new GraphQLNonNull(GraphQLString) },
+                authorId: { type: new GraphQLNonNull(GraphQLID) },
             },
             resolve(parent, args){
                 let book = new Book({ // can do because we imported Book model above
