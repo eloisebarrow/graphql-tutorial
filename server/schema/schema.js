@@ -102,11 +102,27 @@ const Mutation = new GraphQLObjectType({ // change the data in some way
                 age: { type: GraphQLInt }
             },
             resolve(parent, args){
-                let author = new Author({
+                let author = new Author({ // can do because we imported Author model above
                     name: args.name,
                     age: args.age
                 });
                 return author.save()
+            }
+        },
+        addBook: {
+            type: BookType,
+            args: {
+                name: { type: GraphQLString },
+                genre: { type: GraphQLString },
+                authorId: { type: GraphQLID },
+            },
+            resolve(parent, args){
+                let book = new Book({ // can do because we imported Book model above
+                    name: args.name,
+                    genre: args.genre,
+                    authorId: args.authorId
+                });
+                return book.save()
             }
         }
     }
