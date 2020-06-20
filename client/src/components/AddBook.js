@@ -1,15 +1,6 @@
 import React from 'react';
-import { gql } from 'apollo-boost'; // gql will parse our graphql query
 import { graphql } from 'react-apollo'; // binds apollo to react
-
-const getAuthorsQuery = gql`
-  {
-    authors{
-      name
-      id
-    }
-  }
-`
+import { getAuthorsQuery } from '../queries/queries';
 
 function AddBook(props) {
 
