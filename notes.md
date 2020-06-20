@@ -4,12 +4,15 @@
 
 Front End
 - React
-- Apollo (a GraphQL client that allows us to connect GraphQL with React)
+- Apollo (a GraphQL client that parses GraphQL, which isn't JS, and connect with React)
+    - apollo-boost
+    - apollo-react
 
 Backend
 - Express.js
 - GraphQL
 - Lodash
+- CORS
 
 Database
 - MongoDB Atlas
