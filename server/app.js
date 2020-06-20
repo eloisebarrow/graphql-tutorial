@@ -2,8 +2,12 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql'); // provides simple way to create express server that runs graphql API by using middleware on a single route
 const schema = require('./schema/schema');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
+
+// allow cross-origin requests
+app.use(cors());
 
 mongoose.connect(
     'mongodb+srv://eloise:test123@graphql-tutorial-bnc1c.mongodb.net/test', 
