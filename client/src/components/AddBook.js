@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql } from 'react-apollo'; // binds apollo to react
 import { getAuthorsQuery } from '../queries/queries';
 
 function AddBook(props) {
+
+    let [ name, setName ] = useState(null);
+    let [ genre, setGenre ] = useState(null);
+    let [ authorId, setAuthorId ] = useState(null);
 
     const displayAuthors = () => {
         var data = props.data;
@@ -19,21 +23,25 @@ function AddBook(props) {
         }
     }
 
+    const submitForm = (e) => {
+        e.preventDefault();
+    }
+
     return (
-    <form id="add-book">
+    <form id="add-book" onSubmit={ (e) => submitForm(e) }>
         <div className="field">
             <label>Book name:</label>
-            <input type="text" />
+            <input type="text" onChange={ (e) => setName(e.target.value) } />
         </div>
 
         <div className="field">
             <label>Genre:</label>
-            <input type="text" />
+            <input type="text" onChange={ (e) => setGenre(e.target.value) }/>
         </div>
 
         <div className="field">
             <label>Author:</label>
-            <select>
+            <select onChange={ (e) => setAuthorId(e.target.value) }>
                 <option>Select author</option>
                 { displayAuthors() }
             </select>
