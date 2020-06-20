@@ -9,6 +9,7 @@ Front End
 Backend
 - Express.js
 - GraphQL
+- Lodash
 
 Database
 - MongoDB, via MLabs
@@ -36,4 +37,6 @@ STEPS
 To run backend:
 
 node app
+
+To test API in graphiql, add the following to middleware – graphiql: true
 
