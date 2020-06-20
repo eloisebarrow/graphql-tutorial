@@ -9,4 +9,4 @@ const authorSchema = new Schema({
 });
 
 // model refers to a collection in the db
-module.exports = mongoose.model('Author', AuthorSchema);
+module.exports = mongoose.model('Author', authorSchema);

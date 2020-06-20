@@ -92,6 +92,27 @@ const RootQuery = new GraphQLObjectType({ // RootQuery: how we initially jump in
     }
 });
 
+const Mutation = new GraphQLObjectType({ // change the data in some way
+    name: 'Mutation',
+    fields: {
+        addAuthor: {
+            type: AuthorType,
+            args: {
+                name: { type: GraphQLString },
+                age: { type: GraphQLInt }
+            },
+            resolve(parent, args){
+                let author = new Author({
+                    name: args.name,
+                    age: args.age
+                });
+                return author.save()
+            }
+        }
+    }
+});
+
 module.exports = new GraphQLSchema({
-    query: RootQuery // options: which query the FE is allowed to use
+    query: RootQuery, // options: which query the FE is allowed to use
+    mutation: Mutation
 });
