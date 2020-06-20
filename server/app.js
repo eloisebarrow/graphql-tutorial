@@ -17,7 +17,7 @@ mongoose.connection.once('open', () => {
 })
 
 app.use('/graphql', graphqlHTTP({ // middleware
-    schema,
+    schema, // defines graph and object types on that graph
     graphiql: true // use graphiql tool when /graphql is hit
 
 }));
