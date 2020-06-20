@@ -60,7 +60,7 @@ const AuthorType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({ // RootQuery: how we initially jump into the graph
     name: 'RootQueryType',
     fields: {
-        book: {
+        book: { // single book
             type: BookType,
             args: { id: { type: GraphQLID } },
             resolve(parent, args){ // this function fires when 'book' is seen in a query
@@ -68,11 +68,23 @@ const RootQuery = new GraphQLObjectType({ // RootQuery: how we initially jump in
                 return _.find(books, { id: args.id }); //  use lodash to look thru books array and find id of args.id
             }
         },
-        author: {
+        author: { // single author
             type: AuthorType,
             args: { id: { type: GraphQLID } },
             resolve(parent, args){
                 return _.find(authors, { id: args.id });
+            }
+        },
+        books: { // all books
+            type: new GraphQLList(BookType),
+            resolve(parent, args){
+                return books;
+            }
+        },
+        authors: {
+            type: new GraphQLList(AuthorType),
+            resolve(parent, args){
+                return authors;
             }
         }
     }
