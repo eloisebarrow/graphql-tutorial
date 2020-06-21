@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { graphql } from 'react-apollo'; // binds apollo to react
+import {flowRight as compose} from 'lodash'; // allows us to export multiple queries and bind them to the component
 import { getAuthorsQuery } from '../queries/queries';
+import { addBookMutation } from '../queries/queries';
 
 function AddBook(props) {
 
@@ -9,7 +11,7 @@ function AddBook(props) {
     let [ authorId, setAuthorId ] = useState(null);
 
     const displayAuthors = () => {
-        var data = props.data;
+        var data = props.getAuthorsQuery;
         if (data.loading) {
             return ( <option disabled>Loading Authors...</option> )
         } else {
@@ -25,6 +27,7 @@ function AddBook(props) {
 
     const submitForm = (e) => {
         e.preventDefault();
+        props.addBookMutation();
     }
 
     return (
@@ -54,4 +57,7 @@ function AddBook(props) {
 }
 
 // use graphql to bind query to component, where data from returned query is stored in props
-export default graphql(getAuthorsQuery)(AddBook); 
+export default compose (
+    graphql(getAuthorsQuery, { name: "getAuthorsQuery" }),
+    graphql(addBookMutation, { name: "addBookMutation" })
+)(AddBook); 
