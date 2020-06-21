@@ -4,7 +4,7 @@
 
 #### Front End
 - React
-- Apollo (a GraphQL client that parses GraphQL, which isn't JS, and connect with React)
+- Apollo (a GraphQL client that parses GraphQL, which isn't JS, and allows us to connecct with React)
     - apollo-boost
     - apollo-react
 
@@ -37,15 +37,17 @@
 
 returns an object "data" that holds an object, books, which holds an array of objects 
 
-### STEPS
+### Steps
 
-To run backend:
+**To run backend:**
 
 `node app` from server directory
 
-To run frontend:
+**To run frontend:**
 
 `npm start` from client directory
 
-To test API in graphiql, add the following to middleware: `graphiql: true`
+To test API in graphiql, add the following to middleware 
+
+`graphiql: true`
 
