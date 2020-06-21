@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { graphql } from 'react-apollo'; // binds apollo to react
 import {flowRight as compose} from 'lodash'; // allows us to export multiple queries and bind them to the component
 import { getAuthorsQuery } from '../queries/queries';
+import { getBooksQuery } from '../queries/queries';
 import { addBookMutation } from '../queries/queries';
 
 function AddBook(props) {
@@ -32,7 +33,8 @@ function AddBook(props) {
                 name,
                 genre,
                 authorId
-            }
+            },
+            refetchQueries: [{ query: getBooksQuery }]
         });
     }
 
