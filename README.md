@@ -47,7 +47,7 @@ returns an object "data" that holds an object, books, which holds an array of ob
 
 `npm start` from client directory
 
-To test API in graphiql, add the following to middleware 
+**To test API in graphiql, add the following to middleware**
 
 `graphiql: true`
 
