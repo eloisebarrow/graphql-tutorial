@@ -2,6 +2,9 @@ import React from 'react';
 import { graphql } from 'react-apollo'; // binds apollo to react
 import { getBooksQuery } from '../queries/queries';
 
+// components
+import BookDetails from './BookDetails';
+
 function BookList(props) {
   const displayBooks = () => {
     var data = props.data;
@@ -23,6 +26,7 @@ function BookList(props) {
         <ul id="book-list">
           { displayBooks() }
         </ul>
+        <BookDetails />
     </div>
   );
 }
