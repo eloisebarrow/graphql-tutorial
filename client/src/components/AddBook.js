@@ -27,7 +27,13 @@ function AddBook(props) {
 
     const submitForm = (e) => {
         e.preventDefault();
-        props.addBookMutation();
+        props.addBookMutation({
+            variables: {
+                name,
+                genre,
+                authorId
+            }
+        });
     }
 
     return (
@@ -56,7 +62,7 @@ function AddBook(props) {
     );
 }
 
-// use graphql to bind query to component, where data from returned query is stored in props
+// use compose & graphql to bind multiple queries to component, where data from returned query is stored in props
 export default compose (
     graphql(getAuthorsQuery, { name: "getAuthorsQuery" }),
     graphql(addBookMutation, { name: "addBookMutation" })
